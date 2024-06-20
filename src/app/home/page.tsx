@@ -26,6 +26,7 @@ const Page = () => {
                 dispatch(setCurretnPageKey(afterKey))
             }}
           >
+            <ListboxItem key={CurentPageKey.Analytics}>Thống kê</ListboxItem>
             <ListboxItem key={CurentPageKey.Users}>Quản lý người dùng</ListboxItem>
             <ListboxItem key={CurentPageKey.Toys}>Quản lý đồ chơi</ListboxItem>
             <ListboxItem key={CurentPageKey.Orders}>Quản lý đơn hàng</ListboxItem>

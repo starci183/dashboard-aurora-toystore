@@ -11,13 +11,9 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store";
 import { setAuth } from "@/redux/auth.slice";
 import { useRouter } from "next/navigation";
+import { RootContext } from "./root-provider";
 
 const font = Open_Sans({ subsets: ["latin"] });
-
-interface ContextValue {
-  meSwr: SWRResponse<any, any, any>;
-}
-export const RootContext = createContext<ContextValue | null>(null);
 
 const WrappedRoot = ({
   children,

@@ -100,7 +100,7 @@ export const OrderView = ({ orderId }: OrderViewProps) => {
       <Button onPress={onOpen} color="primary" variant="light" isIconOnly>
         <EyeIcon className="w-5 h-5" />
       </Button>
-      <Modal size="4xl" isOpen={isOpen} onOpenChange={onOpenChange}>
+      <Modal size="4xl" scrollBehavior="inside" isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (
             <>
@@ -148,7 +148,7 @@ export const OrderView = ({ orderId }: OrderViewProps) => {
                       if (!editedOrder) return;
                       setEditedOrder({
                         ...editedOrder,
-                        expectedDeliveryDate: value.toDate(),
+                        expectedDeliveryDate: value.toDate().toISOString(),
                       });
                     }}
                     value={parseAbsoluteToLocal(
@@ -279,7 +279,9 @@ export const OrderView = ({ orderId }: OrderViewProps) => {
                       variant="flat"
                       color="primary"
                       onPress={() => {
-                        setEditedOrder(data as Order);
+                        setEditedOrder(
+                          data as Order
+                        );
                       }}
                     >
                       Xoá chỉnh sửa
@@ -290,7 +292,7 @@ export const OrderView = ({ orderId }: OrderViewProps) => {
                         await trigger({
                           ...editedOrder,
                           expectedDeliveryDate:
-                            editedOrder?.expectedDeliveryDate.toISOString(),
+                            editedOrder?.expectedDeliveryDate,
                           orderId,
                         });
                         await mutate();

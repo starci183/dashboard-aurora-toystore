@@ -42,7 +42,7 @@ export interface Order {
     createdAt: Date
     note: string
     updatedAt: Date
-    expectedDeliveryDate: Date,
+    expectedDeliveryDate: string,
     status: OrderStatus
 }
 

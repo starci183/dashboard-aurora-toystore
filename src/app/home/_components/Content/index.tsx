@@ -6,6 +6,7 @@ import { OrderContent } from "./OrderContent";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { CurentPageKey } from "@/redux/sidebar.slice";
+import { AnalyticsContent } from "./AnalyticsContent";
 
 export const Content = () => {
   const selected = useSelector(
@@ -13,6 +14,7 @@ export const Content = () => {
   );
 
   const mapSelectedToComponent: Record<CurentPageKey, JSX.Element> = {
+    [CurentPageKey.Analytics]: <AnalyticsContent />,
     [CurentPageKey.Orders]: <OrderContent />,
     [CurentPageKey.Toys]: <ToyContent />,
     [CurentPageKey.Users]: <UserContent />,

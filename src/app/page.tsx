@@ -17,7 +17,7 @@ import * as Yup from "yup";
 import useSWRMutation from 'swr/mutation'
 import axios from "axios";
 import toast from "react-hot-toast";
-import { RootContext } from "./layout";
+import { RootContext } from "./root-provider";
 
 const Page = () => {
   const [selected, setSelected] = React.useState<Key>("login");

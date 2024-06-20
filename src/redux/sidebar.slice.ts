@@ -1,7 +1,8 @@
 export enum CurentPageKey {
     Users = "users",
     Toys = "Toys",
-    Orders = "Orders"
+    Orders = "Orders",
+    Analytics = "Analytics"
 } 
 
 import { createSlice, configureStore } from '@reduxjs/toolkit'
@@ -11,7 +12,7 @@ interface SidebarSliceState {
 }
 
 const initialState: SidebarSliceState = {
-  value: CurentPageKey.Users
+  value: CurentPageKey.Analytics
 }
 
 const sidebarSlice = createSlice({
