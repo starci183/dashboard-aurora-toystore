@@ -157,7 +157,7 @@ export const ToyContent = () => {
               <div className="font-semibold">{name}</div>
             </TableCell>
             <TableCell>
-              <div>{category.name}</div>
+              <div>{category?.name}</div>
             </TableCell>
             <TableCell><div className="text-justify">{description}</div></TableCell>
             <TableCell>{`${Number(price)} VND`}</TableCell>
