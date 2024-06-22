@@ -149,7 +149,14 @@ export const OrderContent = () => {
                 </Chip>
               )}
             </TableCell>
-            <TableCell>0 VND</TableCell>
+            <TableCell>
+              {(orderDetails ?? []).reduce(
+                (total, { toy, quantity }) =>
+                  total + Number(toy.price) * quantity,
+                0
+              )}{" "}
+              VND
+            </TableCell>
             <TableCell>{dayjs(createdAt).format("DD/MM/YYYY")}</TableCell>
             <TableCell>
               <ButtonGroup>
