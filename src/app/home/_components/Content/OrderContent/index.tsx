@@ -31,6 +31,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { Order, OrderStatus } from "../ToyContents";
 import { OrderView } from "./OrderView";
+import { parseAbsoluteToLocal } from "@internationalized/date";
 
 interface GetOrdersResponseData {
   orders: Array<Order>;
@@ -120,7 +121,7 @@ export const OrderContent = () => {
               <div>{deliveryLocation}</div>
             </TableCell>
             <TableCell>
-              <div>{}</div>
+              <div>{expectedDeliveryDate ? dayjs(expectedDeliveryDate).format("DD/MM/YYYY HH:mm:ss") : dayjs().format("DD/MM/YYYY HH:mm:ss")}</div>
             </TableCell>
             <TableCell>
               {status === OrderStatus.Approved ? (
