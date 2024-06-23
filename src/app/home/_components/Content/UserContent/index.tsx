@@ -26,10 +26,10 @@ interface GetAccountResponseData {
 }
 
 export const UserContent = () => {
-  const [page, setPage] = React.useState(0);
+  const [page, setPage] = React.useState(1);
 
   const { data, isLoading } = useSWR(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/account/get-accounts?pageNumber=${page}&pageSize=10`,
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/account/get-accounts?pageNumber=${page-1}&pageSize=10`,
     async (url: string) => {
       const { data } = await authAxios.get<GetAccountResponseData>(url);
       return data;

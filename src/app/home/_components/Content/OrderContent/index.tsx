@@ -38,10 +38,10 @@ interface GetOrdersResponseData {
 }
 
 export const OrderContent = () => {
-  const [page, setPage] = React.useState(0);
+  const [page, setPage] = React.useState(1);
 
   const { data, isLoading } = useSWR(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/toy/get-orders?pageNumber=${page}&pageSize=10`,
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/toy/get-orders?pageNumber=${page-1}&pageSize=10`,
     async (url: string) => {
       const { data } = await authAxios.get<GetOrdersResponseData>(url);
       return data;
