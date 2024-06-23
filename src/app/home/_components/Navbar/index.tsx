@@ -33,8 +33,7 @@ export const Navbar = () => {
                 isBordered
                 as="button"
                 className="transition-transform"
-                color="secondary"
-                name="Jason Hughes"
+                name={account?.email}
                 size="sm"
                 src={account?.avatarUrl}
               />
