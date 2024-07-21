@@ -10,6 +10,7 @@ interface GetAllCounts {
   numberOfAccounts: number;
   numberOfOrders: number;
   numberOfToys: number;
+  revenue: number
 }
 
 export const AnalyticsContent = () => {
@@ -22,7 +23,7 @@ export const AnalyticsContent = () => {
     {
       keepPreviousData: true,
     }
-  );
+  );  
 
   return (
     <div>
@@ -59,7 +60,9 @@ export const AnalyticsContent = () => {
         <Card className="col-span-2">
           <CardHeader className="p-4 pb-0">Thống kê doanh thu</CardHeader>
           <CardBody className="p-4 min-h-[200px]">
-            <Chart />
+            <div className="text-4xl">{data?.revenue} VND</div>
+            <Spacer y={4}/>
+            <Chart/>
           </CardBody>
         </Card>
       </div>
