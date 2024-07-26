@@ -1,4 +1,6 @@
 "use client";
+import { authAxios } from "@/utils";
+import axios from "axios";
 import React from "react";
 import {
   BarChart,
@@ -10,6 +12,9 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import useSWR from "swr";
+import { Order } from "../../ToyContents";
+import dayjs from "dayjs";
 
 const data = [
   {
@@ -49,16 +54,56 @@ const data = [
   },
 ];
 
+interface GetOrdersResponseData {
+  orders: Array<Order>;
+  count: number;
+}
+
 export const Chart = () => {
+  const { data, isLoading } = useSWR(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/toy/get-orders?pageNumber=${0}&pageSize=999`,
+    async (url: string) => {
+      const { data } = await authAxios.get<GetOrdersResponseData>(url);
+      return data;
+    },
+    {
+      keepPreviousData: true,
+    }
+  );
+
+  let startDate = new Date('2024-07-15');
+  const dataArray: {
+    name: string
+    totalAmount: number
+  }[] = []
+
+  const divisor = Math.ceil(103 / 11)
+  for (let i = 0; i<11; i ++) {
+    let totalAmount = 0
+    for (let j = 0; j < divisor; j++) {
+      totalAmount+= (data?.orders[i*divisor + j]?.orderDetails ?? []).reduce(
+        (total, { toy, quantity }) =>
+          total + Number(toy.price) * quantity,
+        0
+      )
+    }
+
+    dataArray.push({
+      name: dayjs(startDate).format("MMMM D"),
+      totalAmount,
+    })
+
+    startDate.setDate(startDate.getDate() + 1)
+  }
+
   return (
-      <BarChart width={670} height={400} data={data}>
+      <BarChart width={670} height={400} data={dataArray}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="pv" fill="#8884d8" />
-        <Bar dataKey="uv" fill="#82ca9d" />
+        <Bar dataKey="totalAmount" name="Tổng doanh thu (VND)" fill="#fc645f" />
       </BarChart>
   );
 };

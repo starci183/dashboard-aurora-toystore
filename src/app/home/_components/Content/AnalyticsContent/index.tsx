@@ -5,6 +5,7 @@ import { Card, CardBody, CardHeader, Spacer } from "@nextui-org/react";
 import useSWR from "swr";
 import { Chart } from "./Chart";
 import PieChartNe from "./Pie";
+import { UserIcon } from "@heroicons/react/24/outline";
 
 interface GetAllCounts {
   numberOfAccounts: number;
@@ -54,13 +55,14 @@ export const AnalyticsContent = () => {
         <Card className="col-span-1">
           <CardHeader className="p-4 pb-0">KPI</CardHeader>
           <CardBody className="p-4 min-h-[200px]">
-            <PieChartNe />
+            <div><span className="">Tổng số người dùng:</span> <span className="text-warning">50</span>  <span className="text-success">(Thực tế 54 - Vượt 8%)</span></div>
+            <div><span className="">Tổng số đơn:</span>  <span className="text-warning">100</span> <span className="text-success">(Thực tế 103 - Vượt 3%)</span></div>
           </CardBody>
         </Card>
         <Card className="col-span-2">
           <CardHeader className="p-4 pb-0">Thống kê doanh thu</CardHeader>
           <CardBody className="p-4 min-h-[200px]">
-            <div className="text-4xl">{data?.revenue} VND</div>
+            <div className="text-2xl text-primary">{data?.revenue} VND</div>
             <Spacer y={4}/>
             <Chart/>
           </CardBody>
