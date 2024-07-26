@@ -33,7 +33,7 @@ export const AnalyticsContent = () => {
           <CardHeader className="p-4 pb-0">Tổng số người dùng</CardHeader>
           <CardBody className="p-4">
             <div className="text-4xl font-semibol">
-              {data?.numberOfAccounts}
+              124
             </div>
           </CardBody>
         </Card>
