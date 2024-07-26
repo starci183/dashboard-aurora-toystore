@@ -55,7 +55,7 @@ export const AnalyticsContent = () => {
         <Card className="col-span-1">
           <CardHeader className="p-4 pb-0">KPI</CardHeader>
           <CardBody className="p-4 min-h-[200px]">
-            <div><span className="">Tổng số người dùng:</span> <span className="text-warning">50</span>  <span className="text-success">(Thực tế 54 - Vượt 8%)</span></div>
+            <div><span className="">Tổng số người dùng:</span> <span className="text-warning">100</span>  <span className="text-success">(Thực tế 124 - Vượt 24%)</span></div>
             <div><span className="">Tổng số đơn:</span>  <span className="text-warning">100</span> <span className="text-success">(Thực tế 103 - Vượt 3%)</span></div>
           </CardBody>
         </Card>
